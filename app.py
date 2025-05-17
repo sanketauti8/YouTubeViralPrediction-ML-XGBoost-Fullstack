@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify
 import pandas as pd
 import joblib
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
 model = joblib.load("youtube_model.pkl")
 
 @app.route('/predict', methods=['POST'])
